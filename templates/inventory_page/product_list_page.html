@@ -15,7 +15,7 @@
             <table class="table table-bordered table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th>#</th> <!-- Serial Number Column -->
+                        <th>SN</th> <!-- Serial Number Column -->
                         <th>Name</th>
                         <th>Category</th>
                         <th>Price</th>
@@ -53,5 +53,44 @@
             </table>
         </div>
     </div>
+<!--    pagination section-->
+    <div class="d-flex justify-content-center mt-4">
+    <nav>
+        <ul class="pagination">
+            {% if products_paginated.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products_paginated.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&laquo;</span>
+            </li>
+            {% endif %}
+
+            {% for page_num in products_paginated.paginator.page_range %}
+            <li class="page-item {% if page_num == products_paginated.number %}active{% endif %}">
+                <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+            </li>
+            {% endfor %}
+
+            {% if products_paginated.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products_paginated.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&raquo;</span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
 </div>
+
+</div>
+
+
 {% endblock %}

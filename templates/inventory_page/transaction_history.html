@@ -20,6 +20,10 @@
                 {{ form.product }}
             </div>
             <div class="px-4">
+                <label for="product">Store:</label>
+                {{ form.store }}
+            </div>
+            <div class="px-4">
                 <label for="employee">Employee:</label>
                 {{ form.employee }}
             </div>
@@ -36,6 +40,7 @@
             <th>#</th> <!-- Serial Number Column -->
             <th>Transaction Type</th>
             <th>Product</th>
+            <th>Store</th>
             <th>Quantity</th>
             <th>Employee</th>
             <th>Date</th>
@@ -47,6 +52,7 @@
             <td>{{ forloop.counter }}</td> <!-- Serial Number -->
             <td>{{ transaction.get_transaction_type_display }}</td>
             <td>{{ transaction.product.name }}</td>
+            <td>{{ transaction.product.store }}</td>
             <td>{{ transaction.quantity }}</td>
             <td>{{ transaction.employee.username }}</td>
             <td>{{ transaction.timestamp }}</td>
@@ -95,5 +101,6 @@
         </ul>
     </nav>
 </div>
+
 {% endblock %}
 

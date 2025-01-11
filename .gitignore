@@ -1,3 +1,4 @@
 /_MACOSX
 .idea
 .venv
+.env
